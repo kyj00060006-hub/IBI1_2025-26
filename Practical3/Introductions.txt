@@ -1,4 +1,4 @@
-Hello, my name is Rob.
-I like drinking tea and eating chocolate biscuits.
-I am enjoying teaching IBI1 in person again 
+Hello, my name is Kong Yujia.
+I like sleeping.
+Charpdash is my good friends.
 I am happy that I can push my repo from Visual Studio Code to GitHub
