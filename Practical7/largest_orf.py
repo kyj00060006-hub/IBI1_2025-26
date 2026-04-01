@@ -1,7 +1,8 @@
 import re
 seq='AAGAUACAUGCAAGUGGUGUGUCUGUUCUGAGAGGGCCUAAAAG'
+#Regex
 pattern=re.compile(r'(?=(AUG(?:[ACGU]{3})*?(?:UAA|UAG|UGA)))')
-
+#find all matches through lookahead group
 matche=pattern.findall(seq)
 
 if matche:

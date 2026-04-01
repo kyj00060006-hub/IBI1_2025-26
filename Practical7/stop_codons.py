@@ -2,11 +2,13 @@ import re
 import matplotlib.pyplot as plt
 from collections import Counter
 
+#define target_stop, ensure input is valid
 target_stop=input("Enter one of the stop codons (TAA, TAG, TGA): ").strip().upper()
 if target_stop not in ['TAA', 'TAG', 'TGA']:
     print("Invalid stop codon. Please enter TAA, TAG, or TGA.")
     exit()
-
+    
+#define input and output files
 input_file="Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"
 codon_counts=Counter()
 pattern = re.compile(rf'(?=(ATG(?:[ACGT]{3})*?({target_stop})))')
