@@ -1,51 +1,61 @@
 import re
-import matplotlib.pyplot as plt
-from collections import Counter
 
-#define target_stop, ensure input is valid
-target_stop=input("Enter one of the stop codons (TAA, TAG, TGA): ").strip().upper()
-if target_stop not in ['TAA', 'TAG', 'TGA']:
-    print("Invalid stop codon. Please enter TAA, TAG, or TGA.")
-    exit()
+def read_fasta(filename):
+    genes={}
+    current_id=None
+    current_seq=[]
+    with open(filename,'r') as f:
+        for line in f:
+            line=line.strip()
+            if line.startswith('>'):
+                if current_id:
+                    genes[current_id]=''.join(current_seq)
+                match=re.search(r'gene:(\w+)',line) # Extract gene name
+                current_id=match.group(1) if match else line.split()[0][1:] # Fallback if 'gene:' not found
+                current_seq=[]
+            else:
+                current_seq.append(line)
+        if current_id:
+            genes[current_id]=''.join(current_seq)
+    return genes
+
+def find_in_frame_stop_codons(sequence):
+    stop_codons={'TAA','TAG','TGA'}
+    found_stop_codons=set()
+    # Find all potential ORFs starting with 'ATG'
+    # The regex captures the entire ORF, and also the specific stop codon found at the end.
+    # Using lookahead to find all possible ORFs, even overlapping ones.
+    # The first group captures the entire ORF, the second group captures the stop codon.
+    pattern =re.compile(r'(?=(ATG((?:[ACGT]{3})*?)(TAA|TAG|TGA)))')
     
-#define input and output files
-input_file="Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"
-codon_counts=Counter()
-pattern = re.compile(rf'(?=(ATG(?:[ACGT]{3})*?({target_stop})))')
+    for match in pattern.finditer(sequence):
+        full_orf=match.group(1) # The entire ORF
+        stop_codon=match.group(4) # The specific stop codon (TAA, TAG, TGA)
+        if stop_codon in stop_codons:
+            found_stop_codons.add(stop_codon)
+            
+    return list(found_stop_codons) if found_stop_codons else None
 
-def count_codons_in_seq(seq):
-    matches=pattern.findall(seq)
-    if matches:
-        longest_orf = max(matches, key=lambda x: len(x[0]))[0]
-        
-        for i in range(0,len(longest_orf)-3,3):
-            codon=longest_orf[i:i+3]
-            codon_counts[codon]+=1
+if __name__=='__main__':
+    input_fasta_file="Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"
+    output_fasta_file="stop_genes.fa"
 
-with open(input_file,'r') as infile:
-    current_seq=""
-    for line in infile:
-        line=line.strip()
-        if line.startswith(">"):
-            if current_seq:
-                count_codons_in_seq(current_seq)
-            current_seq=""
-        else:
-            current_seq+=line
-        
-    if current_seq:
-        count_codons_in_seq(current_seq)
+    all_genes=read_fasta(input_fasta_file)
 
-if not codon_counts:
-    print(f"No ORFs found ending with {target_stop}.")
-    exit()
+    genes_with_stop_codons={}
 
-labels=list(codon_counts.keys())
-sizes=list(codon_counts.values())
-plt.figure(figsize=(12, 10))
-plt.pie(sizes, labels=labels, startangle=140, textprops={'fontsize': 8})
-plt.axis('equal')
-plt.title(f'Upstream In-Frame Codon Distribution for Longest ORFs ending in {target_stop}')
-output_image=f'codon_distribution_{target_stop}.png'
-plt.savefig(output_image, bbox_inches='tight')
-print(f"Pie chart successfully generated and saved to '{output_image}'.")
+    for gene_name, sequence in all_genes.items():
+        found_stops=find_in_frame_stop_codons(sequence)
+        if found_stops:
+            genes_with_stop_codons[gene_name]={'sequence': sequence, 'stops': found_stops}
+
+    with open(output_fasta_file,'w') as outfile:
+        for gene_name, data in genes_with_stop_codons.items():
+            stops_str=", ".join(sorted(data['stops']))
+            outfile.write(f">{gene_name} Stop_Codons:{stops_str}\n")
+            # Write sequence, breaking into 60 characters per line
+            for i in range(0,len(data['sequence']),60):
+                outfile.write(data['sequence'][i:i+60]+'\n')
+
+    print(f"Processed {len(all_genes)} genes. Found {len(genes_with_stop_codons)} genes with in-frame stop codons.")
+    print(f"Results written to {output_fasta_file}")
