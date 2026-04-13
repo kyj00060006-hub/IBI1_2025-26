@@ -47,4 +47,4 @@ if gender=='female':
 crcl=round(crcl,2)
     
 print('\nResult:')
-print('Your crcl is',+str(crcl),+'ml/min')
+print(f'Your crcl is {crcl} ml/min.')

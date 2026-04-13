@@ -15,8 +15,8 @@ W=X or Y
 print(W)
 #W=True
 
-#Truth Table for W=(X and not Y) or (not X and Y)
-# X=True,Y=True => W=False
+#Truth Table for W= X or Y
+# X=True,Y=True => W=True
 # X=True,Y=False => W=True
 # X=False,Y=True => W=True
 # X=False,Y=False => W=False
