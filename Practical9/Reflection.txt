@@ -1,0 +1,4 @@
+Reflection:
+This practical was truly challenging and rewarding. It is an application that translates abstract epidemiological concepts into concrete probabilistic model code.
+SIR.py was relatively straightforward, while SIR_vaccination.py introduced and adjusted the parameter of vaccination rate. spatial_SIR.py was more difficult, and writing pseudocode in advance was truly helpful.
+Stochastic models produce noticeably different results every time they run, which reflects the randomness inherent in the process of disease spread.
