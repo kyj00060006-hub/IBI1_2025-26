@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 # Parameters
 beta = 0.3
@@ -23,14 +24,21 @@ population = np.zeros((100, 100))
 outbreak = np.random.choice(range(100), 2)
 population[outbreak[0], outbreak[1]] = 1
 
+# (Updated) Create a list for recording every frame.
+history=[]
+
 # Plot selected time points
 plot_times = {0, 10, 50, 100}
 fig_count = 1
 
 # Time course: 100 time points
 for t in range(101):
+    
+    # (Updated) Record current data.
+    history.append(population.copy())
+    
     if t in plot_times:
-        plt.figure(figsize=(4, 4), dpi=100)
+        plt.figure(figsize=(4, 5), dpi=100)
         plt.imshow(population, cmap='viridis', interpolation='nearest')
         plt.title(f'Spatial SIR - time {t}')
         plt.colorbar(label='0=S, 1=I, 2=R')
@@ -68,3 +76,25 @@ for t in range(101):
                             new_population[nr, nc] = 1
 
     population = new_population
+    
+# Create an animation to visually show the continuous change#########
+print('Plz wait a moment, the animation is generating...')
+# (Updated) Generate the image through 'history' list
+# Another for animation
+fig_anim, ax_anim = plt.subplots(figsize=(5, 5), dpi=100)
+
+# Initialise the first frame
+im_anim = ax_anim.imshow(history[0], cmap='viridis', vmin=0, vmax=2, interpolation='nearest')
+plt.colorbar(im_anim, ax=ax_anim, label='0=S, 1=I, 2=R')
+
+# Define the animation function
+def update_anim(frame):
+    im_anim.set_array(history[frame])
+    ax_anim.set_title(f'Spatial SIR - time {frame}')
+    return [im_anim]
+
+# Generate the animation and save
+ani = animation.FuncAnimation(fig_anim, update_anim, frames=len(history), interval=100, blit=False)
+ani.save('spatial_SIR.gif', writer='pillow')
+plt.close(fig_anim)
+print("spatial_SIR.gif is generated.")
