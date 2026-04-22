@@ -1,0 +1,10 @@
+question.txt
+
+Question: 
+What was the distribution of DALYs across all countries in 2019?
+
+Line Number: 
+The code to address this question starts on Line 53 in the dalys.py file.
+
+Discussion of Result: 
+The plotted histogram shows that the distribution of global DALYs rates in 2019 is strongly right-skewed. The majority of countries are clustered towards the lower end of the DALYs rate spectrum, indicating generally better health outcomes. However, the long tail extending to the right reveals that a minority of countries still experience an extreme, disproportionate burden of disease and mortality (such as the Central African Republic identified earlier).
