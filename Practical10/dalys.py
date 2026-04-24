@@ -28,8 +28,8 @@ print(f"Last year recorded for Zimbabwe: {last_zim}")
 
 # 3. Countries with max and min DALYs in 2019
 recent_data = dalys_data[dalys_data["Year"] == 2019]
-max_country_2019 = recent_data.loc[recent_data[daly_col_name].idxmax(), "Entity"]
-min_country_2019 = recent_data.loc[recent_data[daly_col_name].idxmin(), "Entity"]
+max_country_2019 = recent_data.loc[recent_data[daly_col_name].idxmax(), "Entity"] # idxmax() function means find the index of the maximum, i learn it from GenAI and optimize the loop structure.
+min_country_2019 = recent_data.loc[recent_data[daly_col_name].idxmin(), "Entity"] # the same as above.
 print(f"\n2019 - Country with Max DALYs: {max_country_2019}")
 print(f"2019 - Country with Min DALYs: {min_country_2019}")
 # Country with maximum DALYs in 2019: Lesotho
