@@ -1,5 +1,5 @@
 # What does this piece of code do?
-# Answer: run the While loop for 11 times, every time it generate an random integer bwtween 1 and 10, accumulates the sum, and prints the total.
+# Answer: run the While loop for 11 times, every time it generate an random integer between 1 and 10, accumulates the sum, and prints the total.
 # and i think 'ceil' is useless.
 
 # Import libraries

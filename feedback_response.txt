@@ -1,0 +1,19 @@
+Feedback Response
+
+I received formative feedback with a total score of 97.1/100 (Week 3: 13/13, Week 4: 21/23, Week 5: 24/24). The two marks lost were both in Practical 4.
+Below I describe the changes I made in response to the feedback.
+
+Practical4/variables.py
+Issue: The truth table was written for the expression "(X and not Y) or (not X and Y)" rather than the correct expression "X or Y".
+Fix: Updated the comment on line 18 from "#Truth Table for W=(X and not Y) or (not X and Y)" to "#Truth Table for W= X or Y"
+and corrected the first row of the table (X=True, Y=True) from W=False to W=True, which is the correct result for "X or Y".
+
+Practical4/mystery_code.py
+Issue: The description comment did not specify that the random integers are generated between 1 and 10.
+Fix: Updated the comment on line 2 to read:
+    "run the While loop for 11 times, every time it generate a random integer
+    between 1 and 10, accumulates the sum, and prints the total."
+
+Practical4/creatine_clearance.py
+Although no marks were deducted, feedback noted that the print statement incorrectly mixed commas and plus signs. Fixed by rewriting line 50 as an f-string:
+    print(f'Your crcl is {crcl} ml/min.')
