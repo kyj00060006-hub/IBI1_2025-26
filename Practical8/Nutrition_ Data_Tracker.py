@@ -33,12 +33,13 @@ def track_nutrition(food_items_list):
         print("Warning: Total fat exceeds 90 g!")
 
 # Example usage (name,calories,protein,carbohydrates,fat)
-apple=food_item("Apple",60,0.3,15,0.5)
-chicken_breast=food_item("Chicken Breast",165,31,0,3.6)
-rice=food_item("Rice",205,4.3,45,0.4)
-chocolate_bar=food_item("Chocolate Bar",230,2.5,25,12)
-pizza=food_item("Pizza(slice)",300,12,35,10)
-butter=food_item("Butter(2tbsp)",200,0.2,0,22)
+if __name__=="__main__":
+    apple=food_item("Apple",60,0.3,15,0.5)
+    chicken_breast=food_item("Chicken Breast",165,31,0,3.6)
+    rice=food_item("Rice",205,4.3,45,0.4)
+    chocolate_bar=food_item("Chocolate Bar",230,2.5,25,12)
+    pizza=food_item("Pizza(slice)",300,12,35,10)
+    butter=food_item("Butter(2tbsp)",200,0.2,0,22)
 
-consumed_food_today=[apple,chicken_breast,rice,chocolate_bar,pizza,butter,pizza,chocolate_bar]
-track_nutrition(consumed_food_today)
+    consumed_food_today=[apple,chicken_breast,rice,chocolate_bar,pizza,butter,pizza,chocolate_bar]
+    track_nutrition(consumed_food_today)

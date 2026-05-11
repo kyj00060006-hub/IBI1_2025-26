@@ -2,4 +2,12 @@ This is an example file for reflection in IBI1_2025-26.
 
 During this course, I have learnt version control, how to navigate Unix-like systems and how to write simple programs in Python.
 
-I was able to edit this file to show changes in the lecture
+I was able to edit this file to show changes in the lecture.
+
+### my edits
+
+Although I have no idea why this mysterious reflection.txt appeared in my root directory, since it is here, I will write a few words.
+This semester, I have learned abundant knowledge about computer systems and Python programming, which has given me a basic but profound understanding of computer software and coding. I think the most difficult content is regular expressions (regex), yet it interests me the most. There is an indescribable, mysterious feeling about it, which suddenly reminds me of my favorite subject—mathematics—though I don’t know why. Besides class, I have also explored many regex-related tools, which are very useful.
+I hope I can smoothly apply my coding skills to the field of bioinformatics in the future.
+
+

@@ -31,29 +31,30 @@ def predict_protein_mass(amino_acid_sequence):
     return total_mass
 
 #Example usage
-print("\n--Protein Mass Predictor--")
+if __name__=="__main__":
+    print("\n--Protein Mass Predictor--")
 
-#Example1 normal usage
-try:
-    sequence1="ARNDCEQGHILKMFPSTWYV"
-    mass1=predict_protein_mass(sequence1)
-    print(f"Example 1 (Normal): The total mass of sequence '{sequence1}' is {mass1:.2f} amu")
-except ValueError as e:
-    print(e)
-    
-#Example2 wrong usage
-try:
-    sequence2="KYJ"
-    print(f"\nExample 2 (wrong input)'{sequence2}'):")
-    mass2=predict_protein_mass(sequence2)
-    print(f"This will not print: {mass2}")
-except ValueError as e:
-    print(f"Caught expected error: {e}")
+    #Example1 normal usage
+    try:
+        sequence1="ARNDCEQGHILKMFPSTWYV"
+        mass1=predict_protein_mass(sequence1)
+        print(f"Example 1 (Normal): The total mass of sequence '{sequence1}' is {mass1:.2f} amu")
+    except ValueError as e:
+        print(e)
+        
+    #Example2 wrong usage
+    try:
+        sequence2="KYJ"
+        print(f"\nExample 2 (wrong input)'{sequence2}'):")
+        mass2=predict_protein_mass(sequence2)
+        print(f"This will not print: {mass2}")
+    except ValueError as e:
+        print(f"Caught expected error: {e}")
 
-#input
-try:
-    sequence_input=input('\nInput Your Sequence:')
-    mass=predict_protein_mass(sequence_input)
-    print(f'The total mass of protein in sequence "{sequence_input}" is: {mass:.2f} amu')
-except ValueError as e:
-    print(f"Error in your input: {e}")
+    #input
+    try:
+        sequence_input=input('\nInput Your Sequence:')
+        mass=predict_protein_mass(sequence_input)
+        print(f'The total mass of protein in sequence "{sequence_input}" is: {mass:.2f} amu')
+    except ValueError as e:
+        print(f"Error in your input: {e}")

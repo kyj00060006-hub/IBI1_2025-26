@@ -66,19 +66,19 @@ if __name__=='__main__':
     for codon,num in count.most_common(10):
         print(f"{codon}: {num}")
 
-#generate pie chart
-labels=list(count.keys())
-sizes=list(count.values())
-plt.figure(figsize=(10,7))
-wedges,texts,autotexts=plt.pie(
-    sizes,
-    autopct=lambda p:f'{p:.1f}%'if p>1.5 else '',
-    textprops={'fontsize':7},
-    pctdistance=0.8
-)
-plt.legend(wedges,labels,title='Codon',loc='center left',
-           bbox_to_anchor=(1, 0.5, 0, 1), ncol=2, fontsize=7)
-plt.title(f'Codon distribution upstream of {stop_target}')
-plt.tight_layout()
-plt.savefig(f"codon_pie_{stop_target}.png",dpi=300,bbox_inches='tight')
-plt.close()
+    #generate pie chart
+    labels=list(count.keys())
+    sizes=list(count.values())
+    plt.figure(figsize=(10,7))
+    wedges,texts,autotexts=plt.pie(
+        sizes,
+        autopct=lambda p:f'{p:.1f}%'if p>1.5 else '',
+        textprops={'fontsize':7},
+        pctdistance=0.8
+    )
+    plt.legend(wedges,labels,title='Codon',loc='center left',
+            bbox_to_anchor=(1, 0.5, 0, 1), ncol=2, fontsize=7)
+    plt.title(f'Codon distribution upstream of {stop_target}')
+    plt.tight_layout()
+    plt.savefig(f"codon_pie_{stop_target}.png",dpi=300,bbox_inches='tight')
+    plt.close()
