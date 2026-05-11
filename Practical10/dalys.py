@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-os.chdir('/Users/kyj/Desktop/ibi/Portfolio/Practical10')
+# os.chdir('/Users/kyj/Desktop/ibi/Portfolio/Practical10') but it is absolute path on my Macbook so I have set the script to locate the directory automatically as below.
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 dalys_data = pd.read_csv("dalys-rate-from-all-causes.csv")
 
 # 1. Showing the third and fourth columns for the first 10 rows
