@@ -32,7 +32,7 @@ for idx, vac_rate in enumerate(vaccination_rates):
 
         I_list.append(I)
 
-    color = cm.viridis(idx / len(vaccination_rates))
+    color = cm.viridis(idx / len(vaccination_rates)) # cm.viridis: not taught in course. Provides a perceptually uniform colormap for multi-line plots. Learnt from matplotlib docs.
     label = f'{int(vac_rate * 100)}%'
     plt.plot(I_list, color=color, label=label)
 

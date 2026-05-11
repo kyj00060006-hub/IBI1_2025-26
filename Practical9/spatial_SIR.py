@@ -94,7 +94,7 @@ def update_anim(frame):
     return [im_anim]
 
 # Generate the animation and save
-ani = animation.FuncAnimation(fig_anim, update_anim, frames=len(history), interval=100, blit=False)
+ani = animation.FuncAnimation(fig_anim, update_anim, frames=len(history), interval=100, blit=False) # FuncAnimation: not taught in course. Creates frame-by-frame animation from a list of arrays. Learnt from GenAI.
 ani.save('spatial_SIR.gif', writer='pillow')
 plt.close(fig_anim)
 print("spatial_SIR.gif is generated.")

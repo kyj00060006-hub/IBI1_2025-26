@@ -1,6 +1,6 @@
 import re
 import matplotlib.pyplot as plt
-from collections import Counter
+from collections import Counter # Counter: not taught in course, learned from Python docs. Efficiently counts hashable objects.
 
 #read the file
 def read_fasta(filename):

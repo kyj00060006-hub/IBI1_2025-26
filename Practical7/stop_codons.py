@@ -26,7 +26,7 @@ def find_in_frame_stop_codons(sequence):
     # The regex captures the entire ORF, and also the specific stop codon found at the end.
     # Using lookahead to find all possible ORFs, even overlapping ones.
     # The first group captures the entire ORF, the second group captures the stop codon.
-    pattern =re.compile(r'(?=(ATG((?:[ACGT]{3})*?)(TAA|TAG|TGA)))')
+    pattern =re.compile(r'(?=(ATG((?:[ACGT]{3})*?)(TAA|TAG|TGA)))') # Lookahead regex (?=...): not taught in course, from further learning regex.
     
     for match in pattern.finditer(sequence):
         full_orf=match.group(1) # The entire ORF
