@@ -30,7 +30,7 @@ def find_in_frame_stop_codons(sequence):
     
     for match in pattern.finditer(sequence):
         full_orf=match.group(1) # The entire ORF
-        stop_codon=match.group(4) # The specific stop codon (TAA, TAG, TGA)
+        stop_codon=match.group(3) # The specific stop codon (TAA, TAG, TGA)
         if stop_codon in stop_codons:
             found_stop_codons.add(stop_codon)
             

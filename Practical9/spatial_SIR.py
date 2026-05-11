@@ -43,7 +43,7 @@ for t in range(101):
         plt.title(f'Spatial SIR - time {t}')
         plt.colorbar(label='0=S, 1=I, 2=R')
         plt.tight_layout()
-        plt.savefig(f'patial_SIR_t{t}.png')
+        plt.savefig(f'spatial_SIR_t{t}.png')
         plt.show()
 
     if t == 100:

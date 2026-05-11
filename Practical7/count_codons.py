@@ -24,8 +24,8 @@ def read_fasta(filename):
     return genes
 
 #the longest ORF
-def get_longest_orf(seq):
-    pattern=re.compile(r'ATG(?:(?!TAA|TAG|TGA)...)*(?:TAA|TAG|TGA)')
+def get_longest_orf(seq, stop_target):
+    pattern=re.compile(r'ATG(?:(?!' + stop_target + r')...)*' + stop_target)
     orfs=pattern.findall(seq)
     if not orfs:
         return None
@@ -51,12 +51,9 @@ if __name__=='__main__':
 
     all_codons=[]
     for gene_name,seq in genes.items():
-        best_orf=get_longest_orf(seq)
+        best_orf=get_longest_orf(seq, stop_target)
         if not best_orf:
             continue
-        if best_orf.endswith(stop_target):
-            codons = split_codons(best_orf)
-            all_codons.extend(codons)
 
     if not all_codons:
         print(f"No ORFs ending with {stop_target}")
