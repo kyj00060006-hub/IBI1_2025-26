@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kong Yujia</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --sub: #6e6e73;
+      --accent: #0071e3;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 48px 40px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8e8ed, #d1d1d6);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.2s; }
+    .card:nth-child(4) { animation-delay: 0.3s; }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sub);
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .card-body {
+      font-size: 15px;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .link:hover { opacity: 0.7; }
+
+    .link::after {
+      content: '→';
+      font-size: 14px;
+    }
+
+    .friend-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .friend-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8e8ed, #d1d1d6);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .friend-info .name {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .friend-info .desc {
+      font-size: 13px;
+      color: var(--sub);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="hero card">
+      <div class="avatar">🤪</div>
+      <h1>Kong Yujia</h1>
+      <p class="subtitle">IBI1 Student · ZJE Institute<br>Zhejiang University x University of Edinburgh</p>
+      <a class="link" href="https://zje.zju.edu.cn/zje/main.htm" target="_blank">Visit ZJE</a>
+    </div>
+
+    <div class="card">
+      <div class="card-label">About</div>
+      <div class="card-title">Bioinformatics</div>
+      <div class="card-body">Studying at the intersection of biology and computation. </div>
+      <div class="card-body">IBI1 ICMB IBMS1 IE</div>
+      <a class="link" href="https://github.com/kyj00060006-hub" target="_blank">GitHub Profile</a>
+      <a class="link" href="../">Back</a>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Friend</div>
+      <div class="friend-card">
+        <img src="HJY_Angry.jpg" class="avatar" style="object-fit: cover;">
+        <div class="friend-info">
+          <div class="name">Charpdash</div>
+          <div class="desc">Good friend & fellow explorer</div>
+        </div>
+      </div>
+      <a class="link" href="https://rare-gold-sun.github.io" target="_blank">Visit Charpdash's site</a>
+    </div>
+
+  </div>
+</body>
+</html>
